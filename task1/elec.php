@@ -14,7 +14,7 @@ if ($_POST) {
         case $_POST['num'] > 150 && $_POST['num'] <= 250:
             $unit = 1.2;
             break;
-        case $_POST['num'] > 250 && $_POST['num'] <= 150:
+        case $_POST['num'] > 250 :
             $unit = 1.5;
             break;
     }

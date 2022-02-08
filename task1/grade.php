@@ -24,6 +24,10 @@ if ($_POST) {
         case $percentage >= 40 && $percentage < 50:
             $grade = 'F';
             break;
+        // case $percentage >= 100:
+        //     $percentage = 'You Entered Wrong Marks';
+        //     $grade = '';
+        //     break;
         default:
             # code...
             break;
