@@ -4,6 +4,7 @@ if ($_POST) {
     $total = $_POST['ph'] + $_POST['ch'] + $_POST['bio'] + $_POST['math'] + $_POST['comp'];
     $percentage = ($total / 250) * 100;
     // echo $percentage;
+    if($_POST['ph']<= 50 && $_POST['ch']<= 50 && $_POST['bio']<= 50 && $_POST['math']<= 50 && $_POST['comp']<= 50){
     switch ($percentage) {
         case $percentage >= 90 && $percentage <= 100:
             $grade = 'A';
@@ -32,7 +33,16 @@ if ($_POST) {
             # code...
             break;
     }
+    if (isset($percentage)) {
+        $msg = 'Your Percentage ----> '. $percentage . '%' . '<br>' . '
+        Your Grade Is ----> '. $grade ;
+    }
 }
+else{
+    $msg = 'You Entered Wrong Marks , Maximum mark is "50"';
+}
+}
+
 
 ?>
 
@@ -59,31 +69,36 @@ if ($_POST) {
                 <h4 class="mb-4">Please Enter Your Marks Of These Subjects :</h4>
                 <form method="post">
                     <div class="form-group mb-2">
-                        <input type="number" name="ph" id="num1" class="form-control" placeholder="Your Physics Mark" aria-describedby="helpId">
+                        <input type="number" name="ph" id="num1" class="form-control" required placeholder="Your Physics Mark" aria-describedby="helpId">
                     </div>
                     <div class="form-group mb-2">
-                        <input type="number" name="ch" id="num2" class="form-control" placeholder="Your Chemistry Mark" aria-describedby="helpId">
+                        <input type="number" name="ch" id="num2" class="form-control" required placeholder="Your Chemistry Mark" aria-describedby="helpId">
                     </div>
                     <div class="form-group mb-2">
-                        <input type="number" name="bio" id="num3" class="form-control" placeholder="Your Biology Mark" aria-describedby="helpId">
+                        <input type="number" name="bio" id="num3" class="form-control" required placeholder="Your Biology Mark" aria-describedby="helpId">
                     </div>
                     <div class="form-group mb-2">
-                        <input type="number" name="math" id="num3" class="form-control" placeholder="Your Mathematics Mark" aria-describedby="helpId">
+                        <input type="number" name="math" id="num3" class="form-control" required placeholder="Your Mathematics Mark" aria-describedby="helpId">
                     </div>
                     <div class="form-group mb-4 ">
-                        <input type="number" name="comp" id="num3" class="form-control" placeholder="Your Computer Mark" aria-describedby="helpId">
+                        <input type="number" name="comp" id="num3" class="form-control" required placeholder="Your Computer Mark" aria-describedby="helpId">
                     </div>
                     <div class="form-group col-10 offset-1">
                         <button name="grade" class="btn btn-success rounded">Get The Grade</button>
                     </div>
                 </form>
-                <?php
+                <!-- <?php
                     if (isset($percentage)) {
                         echo "<div class='alert alert-success'>Your Percentage is <strong> $percentage % </strong><br>
                         Your Grade Is <strong> $grade </strong> </div>";
                     }
 
-                ?>
+                ?> -->
+                <?php
+                    if (isset($msg)) {
+                        echo "<div class='alert alert-success'>$msg</div>";
+                    }
+                    ?>
             </div>
         </div>
     </div>
