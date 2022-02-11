@@ -1,5 +1,4 @@
 <?php
-
 $users = [
     (object)[
         'id' => 1,
@@ -14,7 +13,6 @@ $users = [
             "school" => 'drawing',
             'home' => 'painting'
         ],
-        
     ],
     (object)[
         'id' => 2,
@@ -28,7 +26,7 @@ $users = [
         'activities' => [
             "school" => 'painting',
             'home' => 'drawing'
-        ]
+        ],
     ],
     (object)[
         'id' => 3,
@@ -37,42 +35,17 @@ $users = [
             'gender' => 'f'
         ],
         'hobbies' => [
-            'running',
+            'running', 
         ],
         'activities' => [
             "school" => 'painting',
-            'home' => 'drawing'
+            'home' => 'reading'
         ]
+        ,
     ],
-    (object)[
-        'id' => 3,
-        'name' => 'menna',
-        "gender" => (object)[
-            'gender' => 'f'
-        ],
-        'hobbies' => [
-            'running',
-        ],
-        'activities' => [
-            "school" => 'painting',
-            'home' => 'drawing'
-        ]
-    ],
-    (object)[
-        'id' => 3,
-        'name' => 'menna',
-        "gender" => (object)[
-            'gender' => 'f'
-        ],
-        'hobbies' => [
-            'running',
-        ],
-        'activities' => [
-            "school" => 'painting',
-            'home' => 'drawing'
-        ]
-    ],
+    
 ];
+
 
 $table = "<table class='table table-hover table-striped table-dark'>
             <thead>
@@ -87,7 +60,24 @@ $table .=       "</tr>
 $table .=       "<tr>";
                     foreach ($user as $property => $data) {
                         // $table .="<td>$data</td>";
-                        $table .="<td></td>";
+$table .=           "<td>";
+                        if (gettype($data)!='array'  && gettype($data)!='object' ) {
+                            $table .= $data;
+                            }
+                        else{
+                            foreach ($data as $key => $value) {
+                                if ($key == 'gender') {
+                                    if ($value == 'm') {
+                                        $value = 'male';
+                                    }
+                                    else{
+                                        $value = 'female';
+                                    }
+                                }
+                                $table .= $value . ' , ';
+                            }
+                        }
+$table .=           "</td>";
                     }
 $table .=       "</tr>";
                 }
